@@ -16,10 +16,9 @@ func main() {
 	for {
 		if s[i] != ' ' {
 			maxWord += string(s[i])
-			i++
 			continue
 		}
-		i = 0
+		i++
 		space++
 		if utf8.RuneCountInString(maxWord) > maxRunes {
 			maxRunes = utf8.RuneCountInString(maxWord)
@@ -27,6 +26,9 @@ func main() {
 		if space >= 5 {
 			break
 		}
+		// вопрос что делать с последним словом и как прерывать
+		// мы идем по каждому элементу строки и если это не пробел то конструируем новое слово
+		// если это пробел то мы считаем пробелы
 	}
 	fmt.Printf("%s, %s\n", maxWord, maxRunes)
 }
