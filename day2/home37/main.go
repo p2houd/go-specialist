@@ -8,27 +8,28 @@ import (
 func main() {
 	var s string
 	var maxRunes int
+	var curWord []rune
 	var maxWord string
 	var space int
-	var i int
-	fmt.Scan(&s)
-	fmt.Println(s)
-	for {
-		if s[i] != ' ' {
-			maxWord += string(s[i])
+	// s, _ = bufio.NewReader(os.Stdin).ReadString('\n')
+	s = "1 22 333 4444 55555 666666"
+	for _, v := range s {
+		// fmt.Println(i, v)
+		if v != ' ' {
+			curWord = append(curWord[:], v)
 			continue
 		}
-		i++
-		space++
-		if utf8.RuneCountInString(maxWord) > maxRunes {
-			maxRunes = utf8.RuneCountInString(maxWord)
+		// fmt.Println(string(curWord))
+		if utf8.RuneCountInString(string(curWord)) > maxRunes {
+			maxRunes = utf8.RuneCountInString(string(curWord))
+			maxWord = string(curWord)
 		}
-		if space >= 5 {
+		// fmt.Println(maxWord)
+		if space > 5 {
 			break
 		}
-		// вопрос что делать с последним словом и как прерывать
-		// мы идем по каждому элементу строки и если это не пробел то конструируем новое слово
-		// если это пробел то мы считаем пробелы
+		curWord = nil
+		space++
 	}
-	fmt.Printf("%s, %s\n", maxWord, maxRunes)
+	fmt.Printf("%v, %v\n", maxWord, maxRunes)
 }
