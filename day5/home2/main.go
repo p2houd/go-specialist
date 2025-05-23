@@ -115,7 +115,7 @@ func (o Order) New(
 				min: 1,
 				max: 10,
 			},
-			pat: Pattern{"digits", "0123456789"},
+			pat: Pattern{"digits", "123456789"},
 		},
 		fio: Validator{
 			field: fio,
@@ -163,5 +163,9 @@ func main() {
 	o1 := o.New("cocacola", "dsf", "ivan", "8800200060", "111500", "Moscow", "Vorontsovskaya", "35", "5")
 	if o1 != nil {
 		o1.Show()
+	}
+	o2 := o.New("cocacola", "0", "ivan", "8800200060", "111500", "Moscow", "Vorontsovskaya", "35", "5")
+	if o2 != nil {
+		o2.Show()
 	}
 }
