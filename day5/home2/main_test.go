@@ -98,6 +98,19 @@ func TestCheckOrders(t *testing.T) {
 			fl:        "5",
 			valid:     false,
 		},
+		{
+			test_name: "zero quantity",
+			name:      "cocacola",
+			quantity:  "0",
+			fio:       "ivan",
+			tel:       "8800200060",
+			ind:       "10002233",
+			city:      "Moscow",
+			street:    "Vorontsovska",
+			bld:       "35",
+			fl:        "5",
+			valid:     false,
+		},
 	}
 
 	for _, tt := range tests {
